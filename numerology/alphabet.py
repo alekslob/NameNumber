@@ -14,7 +14,7 @@ class Alphabet:
             return ru
         if eng.__contains__(self.char):
             return eng
-        raise UnknowChar("Буква из неизвестного алфавита")
+        raise UnknowChar
     @property
     def table(self) -> dict:
         res = dict()

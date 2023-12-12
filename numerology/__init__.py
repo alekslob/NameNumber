@@ -7,5 +7,5 @@ def start():
             name = input(Message.ENTERNAME.value)
             if name!='':
                 print(NameHundler(name).number)
-        except UnknowChar as e:
-            print(e)
+        except UnknowChar:
+            print(Message.UNKNOWCHAR.value)
