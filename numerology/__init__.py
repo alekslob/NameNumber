@@ -9,6 +9,7 @@ def start():
                 print(Message.YOURNUMBER.value.format(NameHundler(name).number))
                 print(Message.YOURCOMPOSITENUMBER.value.format(NameHundler(name).composite_number))
                 print(Message.YOURINDIVIDNUMBER.value.format(NameHundler(name).individ_number))
+                print(Message.YOURSOULNUMBER.value.format(NameHundler(name).soul_number))
         except UnknowChar:
             print(Message.UNKNOWCHAR.value)
         except LanguageError:

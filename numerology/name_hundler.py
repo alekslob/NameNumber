@@ -5,14 +5,13 @@ class NameHundler:
         self.name = name.lower().replace(' ', '')
         self.__alphabet = Alphabet(self.name)
     
-    def _culc_number(self, name: str) -> int:
-        res = sum(self.__alphabet.table[a] for a in name)
+
+    @property
+    def number(self) -> int:
+        res = sum(self.__alphabet.table[a] for a in self.name)
         while( res > 9):
             res = sum(int(a) for a in str(res))
         return res
-    @property
-    def number(self) -> int:
-        return self._culc_number(self.name)
     
     @property
     def composite_number(self) -> int:
@@ -20,8 +19,26 @@ class NameHundler:
         while( res > 30):
             res = sum(int(a) for a in str(res))
         return res
-    def _get_consonants(self) -> str:
+    
+    @property
+    def consonants(self) -> str:
         return self.name.translate( str.maketrans("", "", Vowels[self.__alphabet.language.name].value))
+    
     @property
     def individ_number(self) -> int:
-        return self._culc_number(self._get_consonants())
+        res = sum(self.__alphabet.table[a] for a in self.consonants)
+        while(res is not 22 and res is not 11 and res > 9):
+            res = sum(int(a) for a in str(res))
+        return res
+    
+    @property
+    def vowels(self) -> str:
+        return self.name.translate(str.maketrans("", "", self.consonants))
+
+    @property
+    def soul_number(self) -> int:
+        res = sum(self.__alphabet.table[a] for a in self.vowels)
+        while(res is not 22 and res is not 11 and res > 9):
+            res = sum(int(a) for a in str(res))
+        return res
+    
